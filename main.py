@@ -27,7 +27,7 @@ user_genres = user_genres["genres"].str.get_dummies("|")
 # Высчитываем среднее значение каждого жанра
 mean_genres = user_genres.mean().sort_values(ascending=False)
 
-# Оставляем 2 любимых жанра и кладём их в список
+# Оставляем 3 любимых жанра и кладём их в список
 user_like_genres = mean_genres[:3].index.values.tolist()
 
 # Удаляем все фильмы, которые смотрел пользователь
@@ -85,10 +85,8 @@ for i in range(n):
         genres = user_like_genres[1]
     elif user_like_genres[2] in str(genres_list[i]):
         genres = user_like_genres[2]
-    elif user_like_genres[0] in str(genres_list[i]) or user_like_genres[1] in str(genres_list[i] or user_like_genres[2] in str(genres_list[i])):
-        print("Алгоритм выбрал этот фильм, так как он ваших любимих жанров - "+user_like_genres[0]+","+user_like_genres[1]+", и имеет высокую оценку -"+str(round(rating_list[i], 1)))
     elif (user_like_genres[0] == "(no genres listed)") or (user_like_genres[1] == "(no genres listed)"):
-        print("Алгоритм выбрал этот фильм, так как вам нравятся фильмы на данную тематику, а также он имеет высокую оценку - " + str(round(rating_list[i], 1)))
+        print("Алгоритм выбрал этот фильм, так как вам нравятся фильмы на данную тематику, а также этот фильм имеет высокую оценку - " + str(round(rating_list[i], 1)))
     print("Алгоритм выбрал этот фильм, так как он вашего любимого жанра - " + genres + ", и имеет высокую оценку - "+str(round(rating_list[i], 1)))
     print("") #Для более удобного чтения разделим выводы пустой строкой
 
