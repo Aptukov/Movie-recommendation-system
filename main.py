@@ -33,7 +33,7 @@ user_like_genres = mean_genres[:3].index.values.tolist()
 # Удаляем все фильмы, которые смотрел пользователь
 movies_data = movies_data.loc[movies_data["userId"] != userid]
 
-# Создаём основной датафрейм: название фильма, средний рейтинг, количество оценок, средняя релевантность, жанр фильма
+# Создаём основной датафрейм: название фильма, средний рейтинг, количество оценок, актуальность оценок, жанр фильма
 main_df = pd.DataFrame(movies_data.groupby("title")["rating"].mean())
 
 # Переименовываем столбец "rating" в "mean_rating"
